@@ -143,8 +143,8 @@ class FileDupes(object):
     We're outputing the md5 checksum, file inode and the filenames as well. This is mainly for
     troubleshooting, as this hasn't been tested extensively enough yet to be sure.
     """
-    sortedList = sorted(self.dupeList, key=lambda file: file[0])
     with open(filename, mode='w') as outfile:
+      sortedList = sorted(self.dupeList, key=lambda file: file[0])
       for size, md5, filename, ino in sortedList:
         outfile.write("%s,%s,%d,%s,\"%s\"\n" % (size, md5, len(filename), ino, filename))
 
